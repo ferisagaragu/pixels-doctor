@@ -1,0 +1,38 @@
+extend type Query {
+  teams: [Team]
+  findUserTeam: Team
+  findAllTeamWorks(year: String): [Chart]
+}
+
+extend type Mutation {
+  createTeam(team: CreateTeamInput): Team
+  updateTeam(team: UpdateTeamInput): Team
+  addUserToTeam(user: AddUsersToTeamInput): Team
+  removeTeam(uuid: String): Team
+}
+
+type Team {
+  uuid: String,
+  name: String,
+  users: [User],
+  createDate: String
+}
+
+type Chart {
+  label: String
+  data: [Int]
+}
+
+input CreateTeamInput {
+  name: String
+}
+
+input UpdateTeamInput {
+  uuid: String
+  name: String
+}
+
+input AddUsersToTeamInput {
+  teamUuid: String,
+  userUuids: [String]
+}

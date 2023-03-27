@@ -1,0 +1,23 @@
+extend type Query {
+  users: [User]
+  findUsersWithOutTeam: [User]
+}
+
+extend type Mutation {
+  updateUser(user: UpdateUserInput): User
+  removeUser(uuid: String): User
+}
+
+type User {
+  uuid: String
+  name: String
+  userName: String
+  role: String
+  createDate: String
+}
+
+input UpdateUserInput {
+  uuid: String
+  name: String,
+  role: String
+}
