@@ -1,0 +1,27 @@
+extend type Query {
+  findWorksByDate(date: String): [Work]
+  findWorkedDates: [String]
+  findWorkedYears: [String]
+  findWorkedMonthsByYear(year: String): [String]
+  findAllWorksByDate(date: String): [Work]
+}
+
+extend type Mutation {
+  createWork(work: CreateWorkInput): Work
+}
+
+type Work {
+  uuid: String
+  serialNumber: String
+  ledFix: Int
+  description: String
+  user: String
+  team: String
+  createDate: String
+}
+
+input CreateWorkInput {
+  serialNumber: String
+  ledFix: Int
+  description: String
+}

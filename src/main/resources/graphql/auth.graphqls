@@ -1,0 +1,37 @@
+extend type Mutation {
+  signUp(user: AuthSingUpInput): SingUpOut,
+  signIn(user: AuthSingInInput): SingInOut,
+  changePassword(user: AuthChangePasswordInput): SingUpOut
+}
+
+type SingUpOut {
+  name: String
+  userName: String
+  createDate: String
+}
+
+type SingInOut {
+  uuid: String
+  name: String
+  userName: String
+  token: String
+  role: String
+}
+
+input AuthSingUpInput {
+  name: String!
+  userName: String!
+  password: String!
+  role: String!
+}
+
+input AuthSingInInput {
+  userName: String!
+  password: String!
+}
+
+input AuthChangePasswordInput {
+  uuid: String!
+  oldPassword: String!
+  password: String!
+}
