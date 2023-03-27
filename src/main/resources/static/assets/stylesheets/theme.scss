@@ -1,0 +1,68 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary-palette: (
+  50: #FFC03A,
+  100: #FFC03A,
+  200: #FFC03A,
+  300: #FFC03A,
+  400: #FFC03A,
+  500: #FFC03A,
+  600: #FFC03A,
+  700: #FFC03A,
+  800: #FFC03A,
+  900: #FFC03A,
+  A100: #FFC03A,
+  A200: #FFC03A,
+  A300: #FFC03A,
+  A400: #FFC03A,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$my-primary: mat.define-palette($primary-palette, 500);
+$my-accent: mat.define-palette($primary-palette, 500);
+
+$my-theme: mat.define-dark-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: hsl(0, 0%, 6.7%) !important; }
+* { color: white !important; }
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.options-button {
+  border-radius: 50px;
+  border-color: transparent;
+  background: transparent;
+}
+
+.warn {
+  color: #ef5350 !important;
+}

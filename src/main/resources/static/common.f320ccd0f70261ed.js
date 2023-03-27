@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpixels_doctor_web=self.webpackChunkpixels_doctor_web||[]).push([[592],{4466:(d,o,_)=>{_.d(o,{m:()=>P});var E=_(6895),n=_(4006),r=_(9549),t=_(7392),M=_(4144),u=_(4859),l=_(4650);let P=(()=>{class a{}return a.\u0275fac=function(O){return new(O||a)},a.\u0275mod=l.oAB({type:a}),a.\u0275inj=l.cJS({imports:[E.ez,n.UX,r.lN,t.Ps,M.c,u.ot]}),a})()}}]);
