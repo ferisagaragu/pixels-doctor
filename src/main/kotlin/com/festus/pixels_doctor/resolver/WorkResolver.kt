@@ -93,6 +93,7 @@ class WorkResolver(
 		val workOut = Work()
 		workOut.serialNumber = work.serialNumber
 		workOut.ledFix = work.ledFix
+		workOut.model = work.model
 		workOut.description = work.description
 		workOut.user = user
 

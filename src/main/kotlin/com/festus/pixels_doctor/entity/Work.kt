@@ -10,6 +10,7 @@ import jakarta.persistence.Table
 
 import java.util.Date
 import java.util.UUID
+
 import org.urx.service.annotation.Key
 import org.urx.service.enums.DefaultValue
 
@@ -21,6 +22,7 @@ class Work(
 	var uuid: UUID,
 	var serialNumber: String,
 	var ledFix: Int,
+	var model: String,
 	@Lob
 	var description: String?,
 	var createDate: Date,
@@ -33,6 +35,7 @@ class Work(
 		uuid = UUID.randomUUID(),
 		serialNumber = "",
 		ledFix = 0,
+		model = "",
 		description = null,
 		createDate = Date(),
 		user = null
