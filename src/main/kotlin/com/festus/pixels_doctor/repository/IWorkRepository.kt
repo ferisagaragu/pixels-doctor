@@ -48,7 +48,8 @@ interface IWorkRepository: JpaRepository<Work, UUID> {
 		nativeQuery = true,
 		value =
 			"select works.* from works " +
-			"where to_char(create_date, 'mm-yyyy') = :monthYear " +
+			"inner join users u on works.user_uuid = u.uuid " +
+			"where to_char(works.create_date, 'mm-yyyy') = :monthYear " +
 			"order by works.create_date desc"
 	)
 	fun findAllWorksByDate(monthYear: String): MutableList<Work>
