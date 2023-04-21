@@ -8,6 +8,7 @@ extend type Query {
 
 extend type Mutation {
   createWork(work: CreateWorkInput): Work
+  deleteWork(uuid: String): Work
 }
 
 type Work {

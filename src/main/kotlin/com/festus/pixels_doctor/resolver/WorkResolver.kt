@@ -100,4 +100,18 @@ class WorkResolver(
 		return workRepository.save(workOut)
 	}
 
+	@Transactional
+	@MutationMapping
+	fun deleteWork(@Argument uuid: UUID): Work {
+		val work = workRepository.findById(uuid).orElseThrow {
+			GraphQLException("Work not found")
+		}
+
+		work.user = null
+		val workOut = workRepository.save(work)
+		workRepository.delete(workOut)
+
+		return workOut
+	}
+
 }
