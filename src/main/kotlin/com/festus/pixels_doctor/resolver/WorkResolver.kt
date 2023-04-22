@@ -2,6 +2,7 @@ package com.festus.pixels_doctor.resolver
 
 import com.festus.pixels_doctor.entity.Work
 import com.festus.pixels_doctor.input.CreateWorkInput
+import com.festus.pixels_doctor.input.FindDaysOfMonthInput
 import com.festus.pixels_doctor.repository.IUserRepository
 import com.festus.pixels_doctor.repository.IWorkRepository
 
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.graphql.data.method.annotation.QueryMapping
 
 import graphql.GraphQLException
+import java.time.YearMonth
 import java.util.UUID
 
 import org.urx.security.AuthContext
@@ -51,13 +53,19 @@ class WorkResolver(
 
 	@Transactional
 	@QueryMapping
-	fun findWorkedMonthsByYear(@Argument year: String): List<String> {
-		val user = userRepository.findById(
-			UUID.fromString(authContext.payload.toString())
-		).orElseThrow {
-			GraphQLException("User not found")
+	fun findDaysOfMonth(@Argument work: FindDaysOfMonthInput): List<String> {
+		val out = arrayListOf<String>()
+
+		repeat(YearMonth.of(work.year, work.month).lengthOfMonth()) {
+			out.add("${if((it + 1) >= 10) "" else "0"}${it + 1}")
 		}
 
+		return out
+	}
+
+	@Transactional
+	@QueryMapping
+	fun findWorkedMonthsByYear(@Argument year: String): List<String> {
 		return workRepository.findWorkedMonthsByYear(year)
 	}
 

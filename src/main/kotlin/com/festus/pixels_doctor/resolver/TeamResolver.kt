@@ -1,23 +1,26 @@
 package com.festus.pixels_doctor.resolver
 
-import org.springframework.graphql.data.method.annotation.Argument
-import org.springframework.stereotype.Controller
-import org.springframework.graphql.data.method.annotation.MutationMapping
-import org.springframework.transaction.annotation.Transactional
-import org.springframework.security.access.prepost.PreAuthorize
-
-import com.festus.pixels_doctor.input.CreateTeamInput
-import com.festus.pixels_doctor.repository.ITeamRepository
 import com.festus.pixels_doctor.entity.Team
 import com.festus.pixels_doctor.input.AddUsersToTeamInput
+import com.festus.pixels_doctor.input.CreateTeamInput
+import com.festus.pixels_doctor.input.FindAllTeamWorksByMonthInput
 import com.festus.pixels_doctor.input.UpdateTeamInput
 import com.festus.pixels_doctor.ouput.ChartOut
+import com.festus.pixels_doctor.repository.ITeamRepository
 import com.festus.pixels_doctor.repository.IUserRepository
 
 import graphql.GraphQLException
 import java.time.Month
+import java.time.YearMonth
 import java.util.UUID
+
+import org.springframework.graphql.data.method.annotation.Argument
+import org.springframework.graphql.data.method.annotation.MutationMapping
 import org.springframework.graphql.data.method.annotation.QueryMapping
+import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.stereotype.Controller
+import org.springframework.transaction.annotation.Transactional
+
 import org.urx.security.AuthContext
 
 @Controller
@@ -58,6 +61,38 @@ class TeamResolver(
 					teamRepository.findAllTeamWorks(
 						team.uuid,
 						"${if ((it.value) >= 10) "" else "0"}${it.value}-$year"
+					)["count"] as Long
+				)
+			}
+
+			chartOut.add(chart)
+		}
+
+		return chartOut
+	}
+
+	@QueryMapping
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	fun findAllTeamWorksByMonth(@Argument team: FindAllTeamWorksByMonthInput): MutableList<ChartOut> {
+		val chartOut = mutableListOf<ChartOut>()
+
+		val teamSearched = teamRepository.findById(team.teamUuid).orElseThrow {
+			throw GraphQLException("Team not found")
+		}
+
+		teamSearched.users?.forEach { user ->
+			val chart = ChartOut()
+			chart.label = user.name
+
+			repeat(YearMonth.of(team.year, team.month).lengthOfMonth()) {
+				val day = "${if((it + 1) >= 10) "" else "0"}${it + 1}"
+				val monthStr = "${if ((team.month) >= 10) "" else "0"}${team.month}"
+
+				chart.data.add(
+					teamRepository.findAllTeamWorksByDayMonthYear(
+						teamSearched.uuid,
+						user.uuid,
+						"${day}-${monthStr}-${team.year}"
 					)["count"] as Long
 				)
 			}

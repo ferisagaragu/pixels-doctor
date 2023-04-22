@@ -25,4 +25,16 @@ interface ITeamRepository: JpaRepository<Team, UUID> {
 	)
 	fun findAllTeamWorks(teamUuid: UUID, mothYear: String): MutableMap<String, Any>
 
+	@Query(
+		nativeQuery = true,
+		value =
+		"select count(w.create_date) from teams " +
+		"inner join users u on teams.uuid = u.team_uuid " +
+		"inner join works w on u.uuid = w.user_uuid " +
+		"where teams.uuid = :teamUuid " +
+		"and u.uuid = :userUuid " +
+		"and to_char(w.create_date, 'dd-mm-yyyy') = :dayMothYear"
+	)
+	fun findAllTeamWorksByDayMonthYear(teamUuid: UUID, userUuid: UUID, dayMothYear: String): MutableMap<String, Any>
+
 }

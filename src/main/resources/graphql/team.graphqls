@@ -2,6 +2,7 @@ extend type Query {
   teams: [Team]
   findUserTeam: Team
   findAllTeamWorks(year: String): [Chart]
+  findAllTeamWorksByMonth(team: FindAllTeamWorksByMonthInput): [Chart]
 }
 
 extend type Mutation {
@@ -12,9 +13,9 @@ extend type Mutation {
 }
 
 type Team {
-  uuid: String,
-  name: String,
-  users: [User],
+  uuid: String
+  name: String
+  users: [User]
   createDate: String
 }
 
@@ -33,6 +34,12 @@ input UpdateTeamInput {
 }
 
 input AddUsersToTeamInput {
-  teamUuid: String,
+  teamUuid: String
   userUuids: [String]
+}
+
+input FindAllTeamWorksByMonthInput {
+  year: Int
+  month: Int
+  teamUuid: String
 }

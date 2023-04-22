@@ -2,6 +2,7 @@ extend type Query {
   findWorksByDate(date: String): [Work]
   findWorkedDates: [String]
   findWorkedYears: [String]
+  findDaysOfMonth(work: FindDaysOfMonthInput): [String]
   findWorkedMonthsByYear(year: String): [String]
   findAllWorksByDate(date: String): [Work]
 }
@@ -27,4 +28,9 @@ input CreateWorkInput {
   ledFix: Int
   model: String
   description: String
+}
+
+input FindDaysOfMonthInput {
+  year: Int
+  month: Int
 }
