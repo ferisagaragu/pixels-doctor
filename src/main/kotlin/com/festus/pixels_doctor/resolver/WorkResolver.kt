@@ -102,6 +102,7 @@ class WorkResolver(
 		workOut.serialNumber = work.serialNumber
 		workOut.ledFix = work.ledFix
 		workOut.model = work.model
+		workOut.dt = work.dt
 		workOut.description = work.description
 		workOut.user = user
 

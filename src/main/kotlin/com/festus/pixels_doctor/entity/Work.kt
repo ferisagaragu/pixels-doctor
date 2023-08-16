@@ -23,6 +23,7 @@ class Work(
 	var serialNumber: String,
 	var ledFix: Int,
 	var model: String,
+	var dt: Boolean?,
 	@Lob
 	var description: String?,
 	var createDate: Date,
@@ -36,6 +37,7 @@ class Work(
 		serialNumber = "",
 		ledFix = 0,
 		model = "",
+		dt = false,
 		description = null,
 		createDate = Date(),
 		user = null

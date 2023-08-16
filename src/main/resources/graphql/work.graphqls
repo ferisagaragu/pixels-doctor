@@ -21,12 +21,14 @@ type Work {
   user: String
   team: String
   createDate: String
+  dt: Boolean
 }
 
 input CreateWorkInput {
   serialNumber: String
   ledFix: Int
   model: String
+  dt: Boolean
   description: String
 }
 
