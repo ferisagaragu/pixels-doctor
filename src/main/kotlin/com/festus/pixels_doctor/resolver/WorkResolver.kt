@@ -70,8 +70,14 @@ class WorkResolver(
 	}
 
 	@Transactional
-	@QueryMapping
-		fun findWorksByDate(@Argument date: String): MutableList<Work> {
+	@QueryMapping(value = "works")
+	fun findAllWorks(): MutableList<Work> {
+		return workRepository.findAllWorks()
+	}
+
+	@Transactional
+	@QueryMapping()
+	fun findWorksByDate(@Argument date: String): MutableList<Work> {
 		val user = userRepository.findById(
 			UUID.fromString(authContext.payload.toString())
 		).orElseThrow {

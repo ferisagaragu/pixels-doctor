@@ -54,4 +54,13 @@ interface IWorkRepository: JpaRepository<Work, UUID> {
 	)
 	fun findAllWorksByDate(monthYear: String): MutableList<Work>
 
+	@Query(
+		nativeQuery = true,
+		value =
+		"select works.* from works " +
+		"inner join users u on works.user_uuid = u.uuid " +
+		"order by works.create_date desc"
+	)
+	fun findAllWorks(): MutableList<Work>
+
 }
