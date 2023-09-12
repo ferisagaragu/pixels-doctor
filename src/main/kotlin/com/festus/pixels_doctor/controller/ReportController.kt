@@ -4,11 +4,7 @@ import com.festus.pixels_doctor.repository.IWorkRepository
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.util.Date
+import java.nio.charset.StandardCharsets
 import java.util.UUID
 import net.sf.jasperreports.engine.JasperCompileManager
 import net.sf.jasperreports.engine.JasperExportManager
@@ -58,10 +54,10 @@ class ReportController(
 			val data: MutableMap<String?, String?> = HashMap()
 			data["serial"] = work.serialNumber
 			data["description"] = work.description
-			data["physicalDamage"] = if (work.physicalDamage == true) "X" else ""
-			data["factoryDefect"] = if (work.factoryDefect == true) "X" else ""
-			data["beyondRepair"] = if (work.beyondRepair == true) "X" else ""
-			data["dt"] = if (work.dt == true) "X" else ""
+			data["physicalDamage"] = if (work.physicalDamage == true) "\uE5CA" else ""
+			data["factoryDefect"] = if (work.factoryDefect == true) "\uE5CA" else ""
+			data["beyondRepair"] = if (work.beyondRepair == true) "\uE5CA" else ""
+			data["dt"] = if (work.dt == true) "\uE5CA" else "\ue5cd"
 
 			data["levelOne"] = ""
 			if (work.ledFix in 1..4) {
@@ -97,7 +93,7 @@ class ReportController(
 			rmaNumber = work.getTeam()!!
 		}
 
-		val file = ClassPathResource("work-report.jrxml").inputStream
+		val file = ClassPathResource("report/work-report.jrxml").inputStream
 		val jasperReport: JasperReport = JasperCompileManager.compileReport(file)
 		val dataSource = JRBeanCollectionDataSource(out)
 

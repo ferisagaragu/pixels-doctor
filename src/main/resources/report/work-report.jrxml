@@ -37,7 +37,7 @@
 			</rectangle>
 			<image>
 				<reportElement x="10" y="0" width="160" height="50" uuid="f947a7fa-0c64-4c7e-85bd-6ed76957f402"/>
-				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["report/logo.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
@@ -393,7 +393,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{physicalDamage}]]></textFieldExpression>
 			</textField>
@@ -406,7 +406,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{factoryDefect}]]></textFieldExpression>
 			</textField>
@@ -419,7 +419,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{beyondRepair}]]></textFieldExpression>
 			</textField>
@@ -432,7 +432,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="11"/>
+					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dt}]]></textFieldExpression>
 			</textField>

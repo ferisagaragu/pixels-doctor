@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+    <fontFamily name="Material Icons">
+        <normal><![CDATA[font/material-icons/MaterialIcons-Regular.ttf]]></normal>
+        <bold><![CDATA[font/material-icons/MaterialIcons-Regular.ttf]]></bold>
+        <italic><![CDATA[font/material-icons/MaterialIcons-Regular.ttf]]></italic>
+        <bolditalic><![CDATA[font/material-icons/MaterialIcons-Regular.ttf]]></bolditalic>
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+        <exportFonts/>
+    </fontFamily>
+
+    <fontFamily name="Arial">
+        <normal><![CDATA[font/josefin-sans/JosefinSans-Regular.ttf]]></normal>
+        <bold><![CDATA[font/josefin-sans/JosefinSans-Bold.ttf]]></bold>
+        <italic><![CDATA[font/josefin-sans/JosefinSans-Italic.ttf]]></italic>
+        <bolditalic><![CDATA[font/josefin-sans/JosefinSans-BoldItalic.ttf]]></bolditalic>
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+        <exportFonts/>
+    </fontFamily>
+</fontFamilies>
