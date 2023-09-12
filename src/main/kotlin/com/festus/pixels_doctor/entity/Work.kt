@@ -24,6 +24,9 @@ class Work(
 	var ledFix: Int,
 	var model: String,
 	var dt: Boolean?,
+	var physicalDamage: Boolean?,
+	var factoryDefect: Boolean?,
+	var beyondRepair: Boolean?,
 	@Lob
 	var description: String?,
 	var createDate: Date,
@@ -38,6 +41,9 @@ class Work(
 		ledFix = 0,
 		model = "",
 		dt = false,
+		physicalDamage = false,
+		factoryDefect = false,
+	  beyondRepair = false,
 		description = null,
 		createDate = Date(),
 		user = null
