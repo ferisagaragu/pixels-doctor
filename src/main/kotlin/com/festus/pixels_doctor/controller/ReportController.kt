@@ -4,14 +4,15 @@ import com.festus.pixels_doctor.repository.IWorkRepository
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
-import java.nio.charset.StandardCharsets
 import java.util.UUID
+
 import net.sf.jasperreports.engine.JasperCompileManager
 import net.sf.jasperreports.engine.JasperExportManager
 import net.sf.jasperreports.engine.JasperFillManager
 import net.sf.jasperreports.engine.JasperPrint
 import net.sf.jasperreports.engine.JasperReport
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
+
 import org.springframework.core.io.ClassPathResource
 import org.springframework.core.io.InputStreamResource
 import org.springframework.http.HttpHeaders
@@ -19,30 +20,33 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
+import org.urx.service.Request
 
 
-@CrossOrigin(methods = [RequestMethod.GET])
+@CrossOrigin(methods = [RequestMethod.POST])
 @RestController
 @RequestMapping("/rest/works")
 class ReportController(
 	val iWorkRepository: IWorkRepository
 ) {
 
-	@GetMapping("/report/{startDate}/{endDate}/{teamUuid}")
+	@PostMapping("/report")
 	@Transactional
 	fun generateWorkReport(
-		@PathVariable startDate: String,
-		@PathVariable endDate: String,
-		@PathVariable teamUuid: UUID
+		@RequestBody request: Request
 	): ResponseEntity<InputStreamResource?>? {
 		val out: MutableList<Map<String?, String?>> = ArrayList()
 		val parameters: MutableMap<String, Any> = HashMap()
-		val works = iWorkRepository.findAllWorksBetweenDates(startDate, endDate, teamUuid)
+		val works = iWorkRepository.findAllWorksBetweenDates(
+			request["start"].toString(),
+			request["end"].toString(),
+			UUID.fromString(request["teamUuid"].toString())
+		)
 		var levelOneCount = 0
 		var levelTwoCount = 0
 		var levelThreeCount = 0
@@ -90,7 +94,7 @@ class ReportController(
 			}
 
 			out.add(data)
-			rmaNumber = work.getTeam()!!
+			rmaNumber = request["rmaNumber"].toString()
 		}
 
 		val file = ClassPathResource("report/work-report.jrxml").inputStream
