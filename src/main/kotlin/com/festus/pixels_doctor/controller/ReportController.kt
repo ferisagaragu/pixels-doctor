@@ -57,7 +57,7 @@ class ReportController(
 		works.forEach { work ->
 			val data: MutableMap<String?, String?> = HashMap()
 			data["serial"] = work.serialNumber
-			data["description"] = work.description
+			data["description"] = work.model
 			data["physicalDamage"] = if (work.physicalDamage == true) "\uE5CA" else ""
 			data["factoryDefect"] = if (work.factoryDefect == true) "\uE5CA" else ""
 			data["beyondRepair"] = if (work.beyondRepair == true) "\uE5CA" else ""
