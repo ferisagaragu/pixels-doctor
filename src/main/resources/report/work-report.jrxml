@@ -393,7 +393,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="11" pdfFontName="" pdfEncoding=""/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{physicalDamage}]]></textFieldExpression>
 			</textField>
@@ -406,7 +406,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="11" pdfFontName="" pdfEncoding=""/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{factoryDefect}]]></textFieldExpression>
 			</textField>
@@ -419,7 +419,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="11" pdfFontName="" pdfEncoding=""/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{beyondRepair}]]></textFieldExpression>
 			</textField>
@@ -432,7 +432,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Material Icons" size="11" pdfFontName="Material Icons" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="11" pdfFontName="" pdfEncoding=""/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dt}]]></textFieldExpression>
 			</textField>

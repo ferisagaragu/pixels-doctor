@@ -61,7 +61,7 @@ class ReportController(
 			data["physicalDamage"] = if (work.physicalDamage == true) "\uE5CA" else ""
 			data["factoryDefect"] = if (work.factoryDefect == true) "\uE5CA" else ""
 			data["beyondRepair"] = if (work.beyondRepair == true) "\uE5CA" else ""
-			data["dt"] = if (work.dt == true) "\uE5CA" else "\ue5cd"
+			data["dt"] = if (work.dt == true) "yes" else "no"
 
 			data["levelOne"] = ""
 			if (work.ledFix in 1..4) {
