@@ -110,6 +110,9 @@ class WorkResolver(
 		workOut.model = work.model
 		workOut.dt = work.dt
 		workOut.description = work.description
+		workOut.physicalDamage = work.physicalDamage
+		workOut.factoryDefect = work.factoryDefect
+		workOut.beyondRepair = work.beyondRepair
 		workOut.user = user
 
 		return workRepository.save(workOut)

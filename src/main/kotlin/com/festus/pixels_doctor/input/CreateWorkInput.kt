@@ -5,5 +5,8 @@ class CreateWorkInput(
 	val ledFix: Int,
 	val model: String,
 	val dt: Boolean,
-	val description: String
+	val description: String,
+	val physicalDamage: Boolean,
+	val factoryDefect: Boolean,
+	val beyondRepair: Boolean,
 )

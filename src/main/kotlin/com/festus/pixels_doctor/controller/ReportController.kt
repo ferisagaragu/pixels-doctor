@@ -4,6 +4,10 @@ import com.festus.pixels_doctor.repository.IWorkRepository
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 import java.util.UUID
 
 import net.sf.jasperreports.engine.JasperCompileManager
@@ -44,7 +48,7 @@ class ReportController(
 		val parameters: MutableMap<String, Any> = HashMap()
 		val works = iWorkRepository.findAllWorksBetweenDates(
 			request["start"].toString(),
-			request["end"].toString(),
+			addOneDay(request["end"].toString()),
 			UUID.fromString(request["teamUuid"].toString())
 		)
 		var levelOneCount = 0
@@ -58,9 +62,9 @@ class ReportController(
 			val data: MutableMap<String?, String?> = HashMap()
 			data["serial"] = work.serialNumber
 			data["description"] = work.model
-			data["physicalDamage"] = if (work.physicalDamage == true) "\uE5CA" else ""
-			data["factoryDefect"] = if (work.factoryDefect == true) "\uE5CA" else ""
-			data["beyondRepair"] = if (work.beyondRepair == true) "\uE5CA" else ""
+			data["physicalDamage"] = if (work.physicalDamage == true) "yes" else ""
+			data["factoryDefect"] = if (work.factoryDefect == true) "yes" else ""
+			data["beyondRepair"] = if (work.beyondRepair == true) "yes" else ""
 			data["dt"] = if (work.dt == true) "yes" else "no"
 
 			data["levelOne"] = ""
@@ -120,6 +124,15 @@ class ReportController(
 				HttpHeaders.CONTENT_DISPOSITION,
 				"attachment; filename=\"" + UUID.randomUUID() + ".pdf\""
 			).body(InputStreamResource(targetStream))
+	}
+
+	private fun addOneDay(dateStr: String): String {
+		var date: Date = SimpleDateFormat("yyyy-MM-dd").parse(dateStr.split("T")[0])
+		val c = Calendar.getInstance()
+		c.time = date
+		c.add(Calendar.DATE, 1)
+		date = c.time
+		return Timestamp(date.time).toString().replace(" ", "T")
 	}
 
 }

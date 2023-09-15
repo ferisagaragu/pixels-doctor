@@ -23,6 +23,9 @@ type Work {
   team: String
   createDate: String
   dt: Boolean
+  physicalDamage: Boolean
+  factoryDefect: Boolean
+  beyondRepair: Boolean
 }
 
 input CreateWorkInput {
@@ -31,6 +34,9 @@ input CreateWorkInput {
   model: String
   dt: Boolean
   description: String
+  physicalDamage: Boolean
+  factoryDefect: Boolean
+  beyondRepair: Boolean
 }
 
 input FindDaysOfMonthInput {
