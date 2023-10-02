@@ -69,9 +69,8 @@ interface IWorkRepository: JpaRepository<Work, UUID> {
 		nativeQuery = true,
 		value =
 		"select w.* from works w " +
-		"inner join users u on u.uuid = w.user_uuid " +
-		"inner join teams t on t.uuid = u.team_uuid " +
-		"where team_uuid = :teamUuid and w.create_date between\n" +
+		"inner join teams t on t.uuid = w.team_uuid " +
+		"where team_uuid = :teamUuid and w.create_date between " +
 		"to_timestamp(:startDate, 'YYYY-MM-DD') and " +
 		"to_timestamp(:endDate, 'YYYY-MM-DD') "
 	)

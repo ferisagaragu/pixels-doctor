@@ -114,6 +114,7 @@ class WorkResolver(
 		workOut.factoryDefect = work.factoryDefect
 		workOut.beyondRepair = work.beyondRepair
 		workOut.user = user
+		workOut.team = user.team
 
 		return workRepository.save(workOut)
 	}

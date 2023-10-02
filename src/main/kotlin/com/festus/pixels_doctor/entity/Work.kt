@@ -32,7 +32,10 @@ class Work(
 	var createDate: Date,
 
 	@ManyToOne
-	var user: User?
+	var user: User?,
+
+	@ManyToOne
+	var team: Team?
 ) {
 
 	constructor(): this(
@@ -46,9 +49,9 @@ class Work(
 	  beyondRepair = false,
 		description = null,
 		createDate = Date(),
-		user = null
+		user = null,
+		team = null
 	)
-
 
 	@Key(name = "user", autoCall = true, DefaultValue.NULL)
 	fun getUser(): String? {
@@ -57,6 +60,7 @@ class Work(
 
 	@Key(name = "team", autoCall = true, DefaultValue.NULL)
 	fun getTeam(): String? {
+		if (team != null) return team?.name
 		return user?.team?.name
 	}
 

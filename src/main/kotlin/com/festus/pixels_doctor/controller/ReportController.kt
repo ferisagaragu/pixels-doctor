@@ -56,7 +56,6 @@ class ReportController(
 		var levelThreeCount = 0
 		var levelFourCount = 0
 		var levelFiveCount = 0
-		var rmaNumber = ""
 
 		works.forEach { work ->
 			val data: MutableMap<String?, String?> = HashMap()
@@ -98,14 +97,13 @@ class ReportController(
 			}
 
 			out.add(data)
-			rmaNumber = request["rmaNumber"].toString()
 		}
 
 		val file = ClassPathResource("report/work-report.jrxml").inputStream
 		val jasperReport: JasperReport = JasperCompileManager.compileReport(file)
 		val dataSource = JRBeanCollectionDataSource(out)
 
-		parameters["rmaNumber"] = rmaNumber
+		parameters["rmaNumber"] = request["rmaNumber"].toString()
 		parameters["levelOneCount"] = "$levelOneCount"
 		parameters["levelTwoCount"] = "$levelTwoCount"
 		parameters["levelThreeCount"] = "$levelThreeCount"
