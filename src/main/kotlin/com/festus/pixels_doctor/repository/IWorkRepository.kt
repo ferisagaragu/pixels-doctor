@@ -12,9 +12,9 @@ interface IWorkRepository: JpaRepository<Work, UUID> {
 	@Query(
 		nativeQuery = true,
 		value =
-		"select distinct to_char(works.create_date, 'MM-YYYY') from works " +
+		"select to_char(works.create_date, 'MM-YYYY') from works " +
 			"inner join users u on u.uuid = works.user_uuid " +
-			"where user_uuid = :userUuid order by to_char(works.create_date, 'MM-YYYY') desc"
+			"where user_uuid = :userUuid order by works.create_date desc"
 	)
 	fun findWorkedDatesByUserUuid(userUuid: UUID): List<String>
 

@@ -36,7 +36,7 @@ class WorkResolver(
 			GraphQLException("User not found")
 		}
 
-		return workRepository.findWorkedDatesByUserUuid(user.uuid)
+		return workRepository.findWorkedDatesByUserUuid(user.uuid).distinct()
 	}
 
 	@Transactional
