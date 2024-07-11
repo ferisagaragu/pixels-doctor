@@ -131,7 +131,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11"/>
 				</textElement>
-				<text><![CDATA[Factory defect]]></text>
+				<text><![CDATA[Driver IC]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="421" y="40" width="80" height="20" backcolor="#FFE699" uuid="73646543-f9c1-4399-8377-bbaa2e28f3cf">
