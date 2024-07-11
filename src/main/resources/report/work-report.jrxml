@@ -398,7 +398,7 @@
 				<textFieldExpression><![CDATA[$F{physicalDamage}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="341" y="0" width="80" height="17" uuid="26765740-93ec-4430-a54a-1fff5a810a92"/>
+				<reportElement x="341" y="0" width="80" height="17" forecolor="#FF0905" uuid="26765740-93ec-4430-a54a-1fff5a810a92"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
